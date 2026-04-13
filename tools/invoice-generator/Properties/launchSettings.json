@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Osbb.InvoiceGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "--test"
+    }
+  }
+}
