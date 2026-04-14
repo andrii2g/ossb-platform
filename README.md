@@ -1,81 +1,26 @@
 # OSBB Platform
 
-OSBB Platform is a monorepo for digital tools and services that support condominium management in Ukraine.
+`osbb-platform` — це репозиторій для розробки цифрових інструментів і сервісів для управління ОСББ в Україні.
 
-OSBB stands for the Ukrainian housing association model commonly translated as a condominium or apartment building co-ownership association. This repository is intended to host infrastructure, shared libraries, and domain-oriented services for managing units, billing, residents, notifications, maintenance workflows, and future integrations.
+Платформа призначена для поступового розвитку рішень, пов'язаних з обліком, нарахуваннями, мешканцями, документами, комунікацією та іншими процесами ОСББ. Репозиторій організований як база для майбутніх модулів, спільних бібліотек, інфраструктурних компонентів і прикладних інструментів.
 
-The first planned tool in this repository is the Invoice Generator. Additional modules will be introduced incrementally as the platform evolves.
+## Правові матеріали
 
-## Status
+У репозиторії створено окрему структуру для роботи з законами та нормативними актами, які стосуються діяльності ОСББ:
 
-The repository is currently in the bootstrap phase.
+- `docs/laws/core/` — базові закони про ОСББ
+- `docs/laws/accounting/` — матеріали щодо бухгалтерського обліку та фінансових правил
+- `docs/laws/references/` — зведені посилання на офіційні джерела
+- `docs/laws/raw/` — місце для сирих або архівних копій документів у майбутньому
 
-## Planned Modules
+Наразі там зберігаються короткі структуровані описи та посилання на офіційні джерела. Цей розділ потрібен для того, щоб продуктова та технічна логіка платформи спиралася на актуальні правові основи.
 
-- Billing
-- Payments reconciliation
-- Residents registry
-- Notifications
-- Maintenance requests
-- Document storage
-- Voting and governance
+## Генератор квитанцій
 
-## Repository Structure
+У репозиторії вже є готовий інструмент для генерування квитанцій:
 
-```text
-osbb-platform/
-|-- .github/
-|   |-- README.md
-|   `-- workflows/
-|       `-- ci.yml
-|-- docs/
-|   |-- architecture.md
-|   |-- modules.md
-|   `-- roadmap.md
-|-- infra/
-|   |-- README.md
-|   |-- docker/
-|   |   `-- README.md
-|   `-- env/
-|       `-- README.md
-|-- libs/
-|   |-- README.md
-|   |-- contracts/
-|   |   `-- README.md
-|   `-- core/
-|       `-- README.md
-|-- scripts/
-|   |-- README.md
-|   `-- bootstrap/
-|       `-- init-repo.sh
-|-- services/
-|   |-- README.md
-|   |-- billing/
-|   |   `-- README.md
-|   |-- maintenance/
-|   |   `-- README.md
-|   |-- notifications/
-|   |   `-- README.md
-|   |-- payments/
-|   |   `-- README.md
-|   `-- residents/
-|       `-- README.md
-|-- tools/
-|   |-- README.md
-|   `-- invoice-generator/
-|       `-- README.md
-|-- .editorconfig
-|-- .gitignore
-`-- LICENSE
-```
+- `tools/invoice-generator/`
 
-## Repository Principles
+Цей інструмент читає Excel-відомість ОСББ та формує окремі PDF-квитанції для особових рахунків. Він є першим практичним модулем у репозиторії та надалі може бути пов'язаний із підсистемами нарахувань, платежів, звітності та зберігання документів.
 
-- Keep business domains isolated and easy to evolve.
-- Prefer shared contracts and reusable libraries over ad hoc duplication.
-- Keep tooling and infrastructure close to the code they support.
-- Start modular inside the monorepo, then split operationally only when justified.
-
-## Near-Term Direction
-
-Near-term work will focus on repository bootstrap, developer workflow basics, and the first operational tool: Invoice Generator. Domain services will be added as small, focused projects with shared contracts and infrastructure conventions.
+Детальніше: `tools/invoice-generator/README.md`
